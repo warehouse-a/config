@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active:
+    - dev
+
+---
+server:
+  port: 8002
+spring:
+  application:
+    name: springcloud-provider-8002
+  profiles: dev
+  datasource:
+    username: root
+    password: admin
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud01
+    dbcp2:
+      max-idle: 5
+      min-idle: 5
+      max-wait-millis: 200
+      initial-size: 5
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.springcloud.entity
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: springcloud-provider-8002
+    prefer-ip-address: true
