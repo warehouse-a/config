@@ -6,6 +6,9 @@ spring:
 ---
 server:
   port: 8002
+feign:
+  hystrix:
+    enabled: true
 spring:
   application:
     name: springcloud-provider-8002
